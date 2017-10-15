@@ -1,0 +1,29 @@
+{
+  "name": "modest_landing_page",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sendruck/Modest_Landing_Page.git"
+  },
+  "author": "Olexandr Yakovenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sendruck/Modest_Landing_Page/issues"
+  },
+  "homepage": "https://github.com/sendruck/Modest_Landing_Page#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-imagemin": "^3.4.0",
+    "gulp-jade": "^1.1.0",
+    "gulp-ruby-sass": "^2.1.1",
+    "gulp-server-livereload": "^1.9.2",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-uglify": "^3.0.0"
+  }
+}
