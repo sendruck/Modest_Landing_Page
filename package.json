@@ -2,7 +2,7 @@
   "name": "modest_landing_page",
   "version": "1.0.0",
   "description": "",
-  "main": "gulpfile.js",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,11 +19,12 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
+    "gulp-clean-css": "^3.9.0",
     "gulp-imagemin": "^3.4.0",
     "gulp-jade": "^1.1.0",
+    "gulp-livereload": "^3.8.1",
     "gulp-ruby-sass": "^2.1.1",
-    "gulp-server-livereload": "^1.9.2",
     "gulp-sourcemaps": "^2.6.1",
-    "gulp-uglify": "^3.0.0"
+    "gulp-watch-jade": "^1.0.2",
   }
 }

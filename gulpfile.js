@@ -1,11 +1,12 @@
 var gulp = require('gulp'),
-    uglify = require('gulp-uglify'),
     sass = require('gulp-ruby-sass'),
     prefix = require('gulp-autoprefixer'),
     imagemin = require('gulp-imagemin'),
     jade = require('gulp-jade'),
-    server = require('gulp-server-livereload'),
+    livereload = require('gulp-livereload'),
+    cleanCSS = require('gulp-clean-css'),
     sourcemaps = require('gulp-sourcemaps');
+
 
 
     gulp.task('build', function() {  
@@ -13,9 +14,9 @@ var gulp = require('gulp'),
          .pipe(jade({
            pretty: true   
          }))
-         .pipe(uglify())
          .on('error', errorLog)
          .pipe(gulp.dest(''))  
+         .pipe(livereload());         
      });
      
 
@@ -25,28 +26,18 @@ function errorLog(error) {
 }
 
 
-//Live Server
-gulp.task('webserver', function() {
-  gulp.src('')
-    .pipe(server({
-      livereload: true,
-      defaultFile: 'index.html',
-      directoryListing: false,
-      open: false
-    }));
-});
-
-
 //Sass Compilation 
 gulp.task('styles', function() {   
     return sass('sass/styles.scss', {
      style: 'expanded'
     })    
     .pipe(sourcemaps.init())
+    .pipe(cleanCSS())    
     .on('error', errorLog)
     .pipe(prefix('last 2 versions'))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(''))
+    .pipe(livereload());    
    });
 
    //Image Task
@@ -54,17 +45,21 @@ gulp.task('styles', function() {
 gulp.task('image', function(){
   gulp.src('img/*.*')
    .pipe(imagemin())
-   .pipe(gulp.dest('compr_img'));    
+   .pipe(gulp.dest('compr_img'))
+   .pipe(livereload());    
 });
 
 
 //Watch task
 //Watch JS
 gulp.task('watch', function() {
+    livereload.listen();  
     gulp.watch('sass/*.scss', ['styles']);
-    gulp.watch('*.jade', ['build']);
+    gulp.watch('jade/*.jade', ['build']);
     gulp.watch('img/*', ['image']);    
     }); 
 
 
- gulp.task('default', ['build', 'styles', 'image', 'webserver', 'watch']);  
+
+
+gulp.task('default', ['build', 'styles', 'image', 'watch']);  
